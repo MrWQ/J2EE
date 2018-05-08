@@ -1,0 +1,11 @@
+Test.com.computer.mapper.test
+Test.com.computer.service.test
+com.computer.aop
+com.computer.common
+com.computer.constant
+com.computer.handlers
+com.computer.listener
+com.computer.mapper
+com.computer.model
+com.computer.service
+com.computer.thread

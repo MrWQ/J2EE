@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace必须要和Mapper接口名字一致 -->
+<!-- id必须要和Mapper中的方法名一致 -->
+<mapper namespace="com.computer.mapper.ComputerMapper">
+    <!-- 1.添加一条数据 -->
+    <insert id="addComputer" parameterType="com.computer.model.ComputerModel">
+        insert into
+        computer
+        (name,brand,cpu,gpu,ssd,hdd,memory,price)
+        values
+        (#{name},#{brand},#{cpu} ,#{gpu} ,#{ssd}
+        ,#{hdd},#{memory},
+        #{price})
+    </insert>
+
+    <delete id="deleteComputerById" parameterType="int">
+        DELETE FROM computer
+        WHERE id = #{id}
+    </delete>
+
+    <update id="updateComputerById">
+        UPDATE computer SET
+        name = #{0.name},
+        brand = #{0.brand},
+        cpu = #{0.cpu},
+        gpu = #{0.gpu},
+        ssd = #{0.ssd},
+        hdd = #{0.hdd},
+        memory = #{0.memory},
+        price = #{0.price}
+        WHERE  id = #{1}
+    </update>
+
+    <select id="selectComputerById" parameterType="int"
+            resultType="com.computer.model.ComputerModel">
+      SELECT * FROM computer
+      WHERE id = #{id}
+    </select>
+
+    <select id="selectComputers" resultType="com.computer.model.ComputerModel">
+      SELECT  * FROM computer ORDER BY id DESC
+    </select>
+
+    <select id="selectComputersByBrand" resultType="com.computer.model.ComputerModel">
+        SELECT * FROM  computer WHERE brand = #{brand}
+    </select>
+
+    <select id="selectComputersByMemory" resultType="com.computer.model.ComputerModel">
+        SELECT * FROM computer WHERE memory = #{memory}
+    </select>
+
+    <insert id="addMemory" parameterType="MemoryModel">
+        insert into
+        memory_record
+        (maxMemory,totalMemory,freeMemory)
+        values
+        (#{maxMemory},#{totalMemory},#{freeMemory} )
+    </insert>
+</mapper>
